@@ -54,14 +54,14 @@ $db->close();
     <title>Pembayaran Zakat</title>
 </head>
 <body>
-    <?php include "layout/header.html"; ?>
+    <!-- <?php include "layout/header.html"; ?> -->
 
     <h3>Pembayaran Zakat</h3>
     <form action="zakat.php" method="POST">
         <label for="jenis_zakat">Jenis Zakat:</label>
         <select name="jenis_zakat" id="jenis_zakat" required>
             <?php foreach ($zakat_types as $type): ?>
-                <option value="<?= $type['ID_Jenis_Zakat'] ?>"><?= $type['Nama_Jenis_Zakat'] ?></option>
+                <option value="<?= $type['ID_Jenis_Zakat'] ?>"><?= htmlspecialchars($type['Nama_Jenis_Zakat']) ?></option>
             <?php endforeach; ?>
         </select>
         <br>
@@ -69,7 +69,12 @@ $db->close();
         <input type="number" step="0.01" name="jumlah_zakat" id="jumlah_zakat" required />
         <br>
         <label for="jenis_pembayaran">Jenis Pembayaran:</label>
-        <input type="text" name="jenis_pembayaran" id="jenis_pembayaran" required />
+        <select name="jenis_pembayaran" id="jenis_pembayaran" required>
+            <option value="Beras">Beras</option>
+            <option value="Uang">Uang</option>
+            <option value="Transfer Bank">Transfer Bank</option>
+            <option value="E-Wallet">E-Wallet</option>
+        </select>
         <br>
         <button type="submit" name="submit_zakat">Bayar Zakat</button>
     </form>

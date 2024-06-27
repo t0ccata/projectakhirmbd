@@ -51,9 +51,16 @@ if (isset($_POST["login"])) {
     <h3>Login</h3>
     <i><?= $login_message ?></i>
     <form action="login.php" method="POST">
-        <input type="text" placeholder="Nama Muzaqi" name="muzaqi" required />
-        <input type="password" placeholder="Password" name="password" required />
-        <button type="submit" name="login">Login</button>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Nama Muzaqi" name="muzaqi" required />
+            <label for="floatingInput">Nama Muzaqi</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required />
+            <label for="floatingInput">Password</label>
+        </div>
+        <button class="btn btn-primary" type="submit" name="login">Login</button>
     </form>
 
     <?php include "layout/footer.html"; ?>
